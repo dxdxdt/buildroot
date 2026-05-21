@@ -1,6 +1,10 @@
 config BR2_PACKAGE_EXFATPROGS
 	bool "exfatprogs"
 	depends on BR2_USE_WCHAR
+	depends on BR2_USE_MMU # util-linux/libblkid
+	select BR2_PACKAGE_UTIL_LINUX
+	select BR2_PACKAGE_UTIL_LINUX_LIBBLKID
+	select BR2_PACKAGE_MUSL_FTS if !BR2_TOOLCHAIN_USES_GLIBC
 	help
 	  exFAT filesystem userspace utilities.
 
